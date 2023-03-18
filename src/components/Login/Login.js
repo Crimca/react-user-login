@@ -5,26 +5,51 @@ import classes from './Login.module.css';
 import Button from '../UI/Button/Button';
 //------------------------REDUCERS----------------------------
 // This reducer handles the state of the email input field
+// const emailReducer = (state, action) => {
+//   if (action.type === 'USER_INPUT') {
+//     return {value: action.val, isValid: action.val.includes('@')};
+//   }
+//   if (action.type === 'INPUT_BLUR') {
+//     return {value: state.value, isValid: state.value.includes('@')};
+
+// checks if it's my email
 const emailReducer = (state, action) => {
   if (action.type === 'USER_INPUT') {
-    return {value: action.val, isValid: action.val.includes('@')};
+    const EmailIsValid = action.val === 'myemail@email.com';
+    return { value: action.val, isValid: EmailIsValid };
   }
   if (action.type === 'INPUT_BLUR') {
-    return {value: state.value, isValid: state.value.includes('@')};
+    const EmailIsValid = state.value === 'myemail@email.com';
+    return { value: state.value, isValid: EmailIsValid };
   }
+
   return {value: '', isValid: false};
 };
 
 // This reducer handles the state of the password input field
+// const passwordReducer = (state, action) => {
+//   if (action.type === 'USER_INPUT') {
+//     return {value: action.val, isValid: action.val.trim().length > 6};
+//   }
+//   if (action.type === 'INPUT_BLUR') {
+//     return {value: state.value, isValid: state.value.trim().length > 6};
+//   }
+//   return {value: '', isValid: false};
+// };
+
 const passwordReducer = (state, action) => {
   if (action.type === 'USER_INPUT') {
-    return {value: action.val, isValid: action.val.trim().length > 6};
+    const PwIsValid = action.val === 'vab1t1t!';
+    return { value: action.val, isValid: PwIsValid };
   }
   if (action.type === 'INPUT_BLUR') {
-    return {value: state.value, isValid: state.value.trim().length > 6};
+    const PwIsValid = state.value === 'vab1t1t!';
+    return { value: state.value, isValid: PwIsValid };
   }
-  return {value: '', isValid: false};
+  return { value: '', isValid: false };
 };
+
+
 // -------------------------STATES-------------------------------
 // This state variable stores whether the form is currently valid
 const Login = (props) => {
